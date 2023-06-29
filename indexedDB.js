@@ -40,14 +40,14 @@ function regist() {
     }
     //フォームに入力された値を取得
     let date = document.getElementById("date").value;
-    let amount = document.getElementById("amount").value;
+    let amount = document.getElementById("cost").value;
     let memo = document.getElementById("memo").value;
     let category = document.getElementById("category").value;
     //ラジオボタンが収入を選択時はカテゴリを「収入」とする
     if (balance == "収入") {
         category = "収入";
     }
-
+    console.log(balance, date, category, amount, memo);
     //データベースにデータを登録する
     insertData(balance, date, category, amount, memo);
 }
@@ -66,10 +66,8 @@ function insertData(balance, date, category, amount, memo) {
           amount: amount,
           memo: memo,
       }
-}
-
    //データベースを開く
-   let database = indexedDB.open(dbName, dbVersion);
+    let database = indexedDB.open(dbName, dbVersion);
  
    //データベースの開けなかった時の処理
    database.onerror = function (event) {
@@ -98,5 +96,5 @@ function insertData(balance, date, category, amount, memo) {
       }
       db.close();
    }
-
-   //変数がうまく定義されてないのと二重定義になってるとこもあるぽい
+  }
+ 

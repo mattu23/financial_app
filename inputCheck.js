@@ -23,7 +23,7 @@ function inputCheck() {
    //日付、カテゴリ、金額、メモの取得
    let date = document.getElementById("date").value;
    let category = document.getElementById("category").value;
-   let amount = document.getElementById("amount").value;
+   let amount = document.getElementById("cost").value;
    let memo = document.getElementById("memo").value;
 
    //入力チェック。未記入があればresultをfalseにする
