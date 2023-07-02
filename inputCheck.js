@@ -42,3 +42,5 @@ function inputCheck() {
    }
    return result;
 }
+
+//完成！
