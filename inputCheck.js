@@ -1,6 +1,11 @@
 //第3章：UIの動作
+
+
 //ラジオボタンによりカテゴリを有効無効切り替え
-//この処理の意味がわからないときは3-2の図解を読みなおしてね
+//HTML内で、「収入」時のブール型がtrueになっているので、下記関数内処理が実装されカテゴリがブランクになる。
+//=の左側の「.disabled」はセレクトボックスの有効無効を切り替えるための設定項目
+//trueを設定したときにセレクトボックスが無効に、falseを設定したときには有効
+//右のdisabledがtrueだと、左のdisabledが有効になり、上記仕様が実装される。だから引数を代入する必要がある。
 function disableSelectBox(disabled){
   document.getElementById("category").disabled = disabled;
 }
