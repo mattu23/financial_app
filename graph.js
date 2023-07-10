@@ -22,7 +22,9 @@ function createPieChart(rows){
   //円グラフ用にカテゴリと合計金額を配列に入れる
   let keyArray = [];
   let valueArray = [];
+  //このforの記述は連想配列の中身を取り出す繰り返し処理
   for(key in pieChartData){
+    //この部分のpushは配列に値を追加をする関数で、()内に記述した値が追加される
     keyArray.push(key);
     valueArray.push(pieChartData[key]);
   }
