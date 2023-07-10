@@ -1,4 +1,5 @@
 //indexedDBの名前などの設定
+//変数storeNameはオブジェクトストアの名前を格納した変数
 const dbName = "kakeiboDB";
 const storeName = "kakeiboStore";
 const dbVersion = 1;
@@ -6,23 +7,32 @@ const dbVersion = 1;
 //データベース接続する。データベースが未作成なら新規作成する。
 let database = indexedDB.open(dbName, dbVersion);
 
-//データベースとオブジェクトストアの作成
+//変数databaseの中に格納したデータベースを操作してデータベースとオブジェクトストアを作成
+//keyPath:"id"の部分はキーと呼ばれるもので、idというデータをキーとして利用する設定をしている
+//database.onupgradeneededはDBの新規作成時またはバージョン変更時に1回だけ実行される関数
+//eventには、作成したDBに関する情報が代入されている。（無名関数の引数、DBそのものが入っているとほぼ同義）DBの接続した結果に応じて、成功or失敗をログに出力している
 database.onupgradeneeded = function (event) {
     let db = event.target.result;
     db.createObjectStore(storeName, { keyPath: "id" });
     console.log("データベースを新規作成しました");
 }
 
-//データベースに接続に成功した時に発生するイベント
+//DBに接続に成功した時に発生するイベント
 database.onsuccess = function (event) {
+    //接続成功したDBをプログラムで操作できるように変数dbに格納
     let db = event.target.result;
-    // 接続を解除する
+    // 接続を解除する（お作法）
     db.close();
     console.log("データベースに接続できました");
 }
+
+//何かしらのデータ不備やエラーでDBに接続できなかったときの処理
 database.onerror = function (event) {
     console.log("データベースに接続できませんでした");
 }
+
+
+
 //フォームの内容をDBに登録する
 function regist() {
     //フォームの入力チェック。falseが返却されたら登録処理を中断
