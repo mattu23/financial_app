@@ -13,10 +13,10 @@ function disableSelectBox(disabled){
 //収支入力フォームの内容チェック
 function inputCheck() {
   //チェック結果 true:入力チェックOK false:未記入あり
-  let result = true;
+  const result = true;
 
   //選択した収支のラジオボタンの取得
-  let radio = document.getElementsByName("balance");
+  const radio = document.getElementsByName("balance");
   let balance;
   //受け取ったラジオボタンの配列データを、チェックボックスにチェックが入っているか、順番に確認する処理
   //このｆorの条件文内の「radio.length」は配列の数を指している
@@ -32,10 +32,10 @@ function inputCheck() {
    //日付、カテゴリ、金額、メモの取得
    //getElementByIdの引数に取り出したいimputのidを設定することで値を取り出せる
    //このあとの処理で使用するため、取り出した値を各変数に格納している
-   let date = document.getElementById("date").value;
-   let category = document.getElementById("category").value;
-   let amount = document.getElementById("cost").value;
-   let memo = document.getElementById("memo").value;
+   const date = document.getElementById("date").value;
+   const category = document.getElementById("category").value;
+   const amount = document.getElementById("cost").value;
+   const memo = document.getElementById("memo").value;
 
    //入力チェック。未記入があればresultをfalseにする
    if(date == ""){
