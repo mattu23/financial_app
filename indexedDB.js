@@ -105,7 +105,7 @@ function insertData(balance, date, category, amount, memo) {
    database.onsuccess = function (event) {
       const db = event.target.result;
       const transaction = db.transaction(storeName, "readwrite");
-      transaction.oncompconste = function (event) {
+      transaction.oncomplete = function (event) {
           console.log("トランザクション完了");
       }
       transaction.onerror = function (event) {
@@ -175,7 +175,7 @@ function createList(){
                         <td>${element.category}</td>
                         <td>${element.amount}</td>
                         <td>${element.memo}</td>
-                        <td><button onclick = "deconsteData('${element.id}')">X</button></td>
+                        <td><button onclick = "deleteData('${element.id}')">X</button></td>
                     </tr>
                 `;
             });
@@ -193,7 +193,7 @@ function createList(){
 
 //データの削除
 //引数にはDBから取得したデータに含まれるidを渡す。このidをもとにしてどのデータを削除するのかを判断
-function deconsteData(id){
+function deleteData(id){
     //データベースを開く
     const database = indexedDB.open(dbName, dbVersion);
     database.onupgradeneeded = function(event){
@@ -203,7 +203,7 @@ function deconsteData(id){
     database.onsuccess = function (event) {
         const db = event.target.result;
         const transaction = db.transaction(storeName, "readwrite");
-        transaction.oncompconste = function (event) {
+        transaction.oncomplete = function (event) {
             console.log("トランザクション完了");
         }
         transaction.onerror = function (event) {
