@@ -9,7 +9,7 @@ function createPieChart(rows){
   let category = "";
   rows.forEach(function(data) {
     category = data.category;
-    if(category!= "収入"){
+    if( category != "収入"){
       //連想配列のキーにカテゴリが存在していれば金額を加算する
       if(pieChartData[category] === undefined){
         pieChartData[category] = Number(data.amount);
