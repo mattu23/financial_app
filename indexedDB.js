@@ -40,16 +40,23 @@ function regist() {
     //returnは実行するとその時点で関数を強制終了してこの後の処理は実行しない
         return;
     }
+    //たくの追記（リファクタリング）
     //ラジオボタンの取得
     //配列の中に入っているラジオボタンのうち、どのラジオボタンがチェックされているのかを探す処理
-    const radio = document.getElementsByName("balance");
-    let balance;
-    for (let i = 0; i < radio.length; i++) {
-        if (radio[i].checked == true) {
-            balance = radio[i].value;
-            break;
-        }
-    }
+    const radios = Array.from(document.getElementsByName("balance"))
+    const checkedRadio = radios.find(radio => radio.checked) // radios.checkedがtrueの要素が返される
+    const balance = checkedRadio ? checkedRadio.value : undefined // checkedRadio要素はある→true→checkedRadio.valueがbalanceに代入される
+
+    // let balance;
+    // for (let i = 0; i < radio.length; i++) {
+    //     // 配列の中のradio要素のbooleanをチェック
+    //     if (radio[i].checked == true) {
+    //         // radio要素のcheckedがtrueだったら、radio要素のvalueをbalanceに代入
+    //         balance = radio[i].value;
+    //         break;
+    //     }
+    // }
+    // 最終的にbalanceはradio要素のvalueが入っているか、undefined
 
     //フォームに入力された値を取得
     
